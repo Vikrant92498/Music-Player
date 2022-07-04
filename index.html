@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="shortcut icon" href="images/music_logo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    
+    <section class="container-fluid col-lg-1-fluid" id="top-bar">
+        <img src="images/music_logo.webp" width="70px" height="70px">
+        <span id="logo_name">Music Melody</span>
+    </section>
+    <div id="playerBackground"></div>
+    <section id="currentsong">
+        <button onclick="hideplaylist()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784 512"><path d="M54.63 246.6L192 109.3l137.4 137.4C335.6 252.9 343.8 256 352 256s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25l-160-160c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25S42.13 259.1 54.63 246.6zM214.6 233.4c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0L192 301.3l137.4 137.4C335.6 444.9 343.8 448 352 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L214.6 233.4z"/></svg></button>
+            <div class="details">
+              <h1 id="now-playing">No Playlist Choosen</h1>
+              <div class="track-art"></div>
+              <img src="images/default.webp" id="song-image">
+              <br><br><br>
+              <label style="font-size: 24px;font-family: 'Times New Roman', Times, serif;">Track Name : </label>
+              <span id="track-name" style="font-size: 24px;font-family: 'Times New Roman', Times, serif;">-</span>
+              <br>
+              <label style="font-size: 24px;font-family: 'Times New Roman', Times, serif;">Track Artist : </label>
+              <span id="track-artist" style="font-size: 24px;font-family: 'Times New Roman', Times, serif;">-</span>
+    </section>
+    <div class="layer place_border_at_bottom" id="recommendations">
+        <h3 class="font-color-white" style="margin-left:20px;display: block;">Recommended</h3>
+        <br>
+        <div id="category-list1">
+        <div id="sad-songs" >
+            <img src="images/sad-song.jpg" onclick="loadplaylist(0)">
+            <span class="font-color-white place_category-name">Sad Songs</span>
+        </div>
+        <div id="party-songs" onclick="loadplaylist(1)">
+            <img src="images/party-time.jpg">
+            <span class="font-color-white place_category-name">Party Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(2)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(3)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(4)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(5)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+    </div>
+    </div>
+    <aside id="playlist-box" class="overflow-hidden">
+        <button id = "open-playlist" style="border: 0px ;border-radius:10px;background-color: bisque;" onclick="createSpaceForSongInfo()">Open Playlist</button>
+        <h2 class="font-color-white">Opened Playlist</h2>
+        <h1 class="font-color-white"></h1>
+        <div id ="message" class="font-color-white " >No Playlist Opened yet</div>
+    </aside>
+    <div class="layer place_border_at_bottom" id="artist-corner">
+        <h3 class="font-color-white" style="margin-left:20px;"><i class="fa-light fa-user-music"></i>Artist Collection</h3>
+        <div id="category-list2">
+        <div id="sad-songs" onclick="loadplaylist(6)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="party-songs" onclick="loadplaylist(7)">
+            <img src="images/jubin-nautiyal.jpg">
+            <span class="font-color-white place_category-name">Party Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(8)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(9)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(10)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(11)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(12)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(13)">
+            <img src="images/Arijit.jpg" >
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+    </div>
+    </div>
+    <div class="layer place_border_at_bottom" id="artist-corner">
+        <h3 class="font-color-white" style="margin-left:20px;"><i class="fa-light fa-user-music"></i>Artist Collection</h3>
+        <div id="category-list2">
+        <div id="sad-songs" onclick="loadplaylist(6)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="party-songs" onclick="loadplaylist(7)">
+            <img src="images/jubin-nautiyal.jpg">
+            <span class="font-color-white place_category-name">Party Songs</span>
+        </div>
+        <div id="o90s-songs" onclick="loadplaylist(8)">
+            <img src="images/90s.webp">
+            <span class="font-color-white place_category-name">90's Songs</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(9)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(10)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(11)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(12)">
+            <img src="images/Arijit.jpg">
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+        <div id="sad-songs" onclick="loadplaylist(13)">
+            <img src="images/Arijit.jpg" >
+            <span class="font-color-white place_category-name">Arijit Singh</span>
+        </div>
+    </div>
+    </div>
+    <div id="slider-container" >
+        <span class="font-color-white" id="current">00:00</span> 
+        <input id="seeker" type="range" value="0" min="0" max="100%">
+        <span class="font-color-white" id="total" >00:00</span>
+        
+        </div>
+        <div id="controls">
+            <svg id="previous" onclick="prevTrack()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M459.5 71.41l-171.5 142.9v83.45l171.5 142.9C480.1 457.7 512 443.3 512 415.1V96.03C512 68.66 480.1 54.28 459.5 71.41zM203.5 71.41L11.44 231.4c-15.25 12.87-15.25 36.37 0 49.24l192 159.1c20.63 17.12 52.51 2.749 52.51-24.62v-319.9C255.1 68.66 224.1 54.28 203.5 71.41z"/></svg> 
+            <svg  id="play-pause" onclick="pauseTrack()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 63.1l-32 0c-26.51 0-48 21.49-48 47.1v288c0 26.51 21.49 48 48 48L272 448c26.51 0 48-21.49 48-48v-288C320 85.49 298.5 63.1 272 63.1zM80 63.1l-32 0c-26.51 0-48 21.49-48 48v288C0 426.5 21.49 448 48 448l32 0c26.51 0 48-21.49 48-48v-288C128 85.49 106.5 63.1 80 63.1z"/></svg>
+            <svg id="next" onclick="nextTrack()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M52.51 440.6l171.5-142.9V214.3L52.51 71.41C31.88 54.28 0 68.66 0 96.03v319.9C0 443.3 31.88 457.7 52.51 440.6zM308.5 440.6l192-159.1c15.25-12.87 15.25-36.37 0-49.24l-192-159.1c-20.63-17.12-52.51-2.749-52.51 24.62v319.9C256 443.3 287.9 457.7 308.5 440.6z"/></svg>
+     
+        </div>
+    <audio id="audio-bar" src="" controls autoplay style="width: 0px;height:0px" ></audio>
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html> 
